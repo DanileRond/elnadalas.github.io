@@ -81,9 +81,7 @@ body {
     background-color: #eee
 }
 
-label.radio {
-    cursor: pointer
-}
+
 
 label.radio input {
     position: absolute;
