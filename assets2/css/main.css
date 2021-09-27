@@ -87,8 +87,8 @@ label.radio {
 
 label.radio input {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 2px;
+    left: 2px;
     visibility: hidden;
     pointer-events: none
 }
