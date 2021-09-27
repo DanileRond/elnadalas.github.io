@@ -90,7 +90,9 @@ label.radio input {
     visibility: visible;
     pointer-events: none
 }
-
+label.radio {
+    cursor: pointer
+}
 label.radio span {
     padding: 4px 0px;
     border: 1px solid red;
