@@ -89,7 +89,7 @@ label.radio input {
     position: absolute;
     top: 2px;
     left: 2px;
-    visibility: hidden;
+    visibility: visible;
     pointer-events: none
 }
 
@@ -1293,7 +1293,7 @@ input[type="radio"] + label:before {
       width: 100%; }
 
 a.image {
-  overflow: hidden; }
+  overflow: visible; }
   a.image img {
     -moz-transition: -moz-transform 0.2s ease;
     -webkit-transition: -webkit-transform 0.2s ease;
