@@ -12,6 +12,25 @@ if(navigator.mediaDevices.getUserMedia){
     })
 }
 
+// capture image
+captureButton.addEventListener('click', function(event) {
+  canvasElement.style.display = 'block';
+  videoPlayer.style.display = 'none';
+  captureButton.style.display = 'none';
+  var context = canvasElement.getContext('2d');
+  context.drawImage(videoPlayer, 0, 0, canvas.width, videoPlayer.videoHeight / (videoPlayer.videoWidth / canvas.width));
+  videoPlayer.srcObject.getVideoTracks().forEach(function(track) {
+    track.stop();
+  });
+  picture = dataURItoBlob(canvasElement.toDataURL());
+});
+
+
+
+
+
+
+
 btn.addEventListener('click', () => {
     // get intrinsic width and height of the video element
     const width = video.videoWidth, height = video.videoHeight
@@ -30,3 +49,5 @@ btn.addEventListener('click', () => {
     document.querySelector('#dl-btn').click()
 
 })
+
+
