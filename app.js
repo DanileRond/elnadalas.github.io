@@ -3,7 +3,7 @@ const btn = document.querySelector('#btn')
 const canvas =  document.querySelector('#canvas')
 
 if(navigator.mediaDevices.getUserMedia){
-    navigator.mediaDevices.getUserMedia({video: true })
+    navigator.mediaDevices.getUserMedia({video: { facingMode: "environment" } })
     .then(stream => {
         video.srcObject = stream
     })
