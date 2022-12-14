@@ -68,6 +68,9 @@
 
           video.setAttribute("width", width);
           video.setAttribute("height", height);
+          video.setAttribute('autoplay', '');
+          video.setAttribute('muted', '');
+          video.setAttribute('playsinline', '')
           canvas.setAttribute("width", width);
           canvas.setAttribute("height", height);
           streaming = true;
