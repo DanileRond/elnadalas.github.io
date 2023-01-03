@@ -59,21 +59,62 @@ $("#capture").change(function() {
 
     var cameraRoll = $("#cameraRoll")
 
+    var image_file
+
     camera.addEventListener('change', function(e) {
         var file = e.target.files[0];
+        var canvas = document.getElementsByTagName('canvas')[0];
+        var context = canvas.getContext('2d');
+
+        // draw the image onto the canvas
+        context.drawImage(file, 0, 0);
+
+        // get the image data to manipulate
+        var input = context.getImageData(0, 0, canvas.width, canvas.height);
         console.log('file=' + URL.createObjectURL(file));
         // Do something with the image file.
         frame.src = URL.createObjectURL(file);
         addImageToView(file)
+        return_image_matrix(input)
+        console.log(input)
     });
 
+    function return_image_matrix(input) {
+
+        return input
+    }
     function addImageToView(file) {
         var photo = $('<div><div/>');
         photo.css({ 'background-image': "url('" + URL.createObjectURL(file) + "')" });
         photo.addClass('cameraRoll');
+        image_file = photo
         cameraRoll.prepend(photo);
     }
     </script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script> 
+    <py-config>
+        packages = ["matplotlib", "pandas","numpy"]
+      </py-config>
+  
+      <py-script>
+        import pandas as pd
+        import numpy as np
+        import matplotlib.pyplot as plt
+        from js import image_file, addImageToView
+
+        def plot(data):
+            plt.rcParams["figure.figsize"] = (22,20)
+            fig, ax = plt.subplots()
+            bars = ax.barh(data["name"], data["rating"], height=0.7)
+            ax.bar_label(bars)
+            plt.title("Rating of ice cream flavours of your choice")
+            display(fig, target="graph-area", append=False)
+        print(type(addImageToView))
+      </py-script>
+  
+      <py-repl>
+      </py-repl>
 </body>
 
 </html>
